@@ -5,6 +5,29 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/ThejMal01/test-repo.git
+          uri: <config-repo-ssh-uri> #config repository uri
+          default-label: <branch-to-fetch> # branch to fetch
+          private-key: |
+            <private-key-content>
+          passphrase: <private-key-passphrase> # passphrase for the private key
+          ignore-local-ssh-settings: true
+          clone-on-start: true
+          search-paths: config-client, service-b, service-c # add your subdirectories here if any
 server:
   port: 8888
+
+#spring:
+#  application:
+#    name: config-server
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: <config-repo-https-uri> #config repository uri
+#          default-label: <branch-to-fetch> # branch to fetch
+#          username: <github-username>
+#          password: <github-personal-access-token>
+#          clone-on-start: true
+#
+#server:
+#  port: 8888

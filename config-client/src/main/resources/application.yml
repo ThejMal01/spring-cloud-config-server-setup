@@ -2,6 +2,12 @@ spring:
   application:
     name: config-client
   config:
-    import: configserver:http://localhost:8888
+    import: configserver:http://localhost:8888 # URL of the config server
   profiles:
-    active: dev
+    active: dev # active profile to fetch configuration
+  cloud:
+    config:
+      fail-fast: true
+      retry:
+        max-attempts: 3
+      enabled: true
